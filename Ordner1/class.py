@@ -1,5 +1,7 @@
 
 
+def print_new():
+    print("new")
 
 def is_even_or_odd(number):
     """Prints even if divided by 2 otherwise odd."""
