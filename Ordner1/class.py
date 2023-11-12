@@ -1,6 +1,8 @@
+import random
+def randoom(int1:int,int2:int)->int:
+    return random.randint(int1,int2)
 
-def print_new():
-    print("New")
+
 
 def is_even_or_odd(number):
     """Prints even if divided by 2 otherwise odd."""
