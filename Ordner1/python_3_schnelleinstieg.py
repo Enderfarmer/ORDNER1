@@ -1,5 +1,5 @@
 import re
-import wörter
+import wörter, tkinter
 
 
 seiten = wörter.dictionary() # here dictionary.__init__() is called
@@ -19,18 +19,21 @@ seiten = wörter.dictionary() # here dictionary.__init__() is called
 ümenu = '''
 (h)inzufügen
 (l)öschen
+(le)sen
 (e)nde
 '''
 while True: 
     print(ümenu)
     s = input('Methode: ')
-    if s == 'h':
+    if s in'hH':
        try:
         seiten.plus(input('Nummer: '), input('Inhalt: '))
        except:
         print('Leider nicht gelungen.')
-    elif s == 'l':
+    elif s in 'lL':
        seiten.löschen(input('Welche Seite löschen? '))
-    elif s == 'e':
+    elif s in 'Le' or 'le' or'LE'or'lE':
+       print(seiten[input('Seite: ')])
+    elif s == 'eE':
         print('Bis bald!')
         break
