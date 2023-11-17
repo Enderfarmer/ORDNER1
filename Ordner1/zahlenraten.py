@@ -1,13 +1,9 @@
 from random import randint
-from _thread import start_new_thread
 from tkinter import Tk, Label, Entry, Button, StringVar, Radiobutton  # The import with * is bad therefore import modules explicitely
-from time import sleep
 # The fenster properties
 fenster = Tk()
 fenster.title("  Zahlenraten  ")
-fenster.geometry("400x200")
-
-
+fenster.geometry("400x300")
 user_input_variable = StringVar()
 my_string_var = StringVar()
 max_random_value = 100
@@ -39,13 +35,17 @@ my_string_var.set("Geben Sie die Zahl ein")
 numbers_entry = Entry(master=fenster,textvariable=user_input_variable, font=("Arial", 30))
 submit_button = Button(fenster, text="Einreichen", command=random_value_game)
 label = Label(fenster, textvariable=my_string_var, fg="#F0E", bg="black")
-numbers_entry.place(x=150,y=300,width=10, height=30)
+mystringvar = StringVar()
+def gelb():
+    fenster.configure(bg='#FF0')
+s = Radiobutton(master=fenster, text='Gelb',command=gelb,variable=mystringvar)
+
 
 label.pack()
 labell.pack()
-numbers_entry.pack()
-submit_button.pack()
-
+s.pack(side='left')
+submit_button.pack(side="bottom")
+numbers_entry.pack(side="bottom")
 # performing an infinite loop
 # for the window to display
 fenster.mainloop()
