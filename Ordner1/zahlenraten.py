@@ -1,52 +1,53 @@
 from random import randint
-from tkinter import *
 from _thread import start_new_thread
+from tkinter import Tk, Label, Entry, Button, StringVar, Radiobutton  # The import with * is bad therefore import modules explicitely
 from time import sleep
-fenster = Tk(screenName='  Zahlenraten  ')
-label = Label(master=fenster,text='',fg ='purple',bg='black')
-f = StringVar()
-fenster.geometry('300x300')
-def null_einhundert():
- x = Entry(master=fenster2, font=('Arial',30))
- if not x == '':
-  sleep(9)
-  
-  fenster.destroy
-  fenster2 = Tk(screenName='  Zahlenraten  ')
-  label2 = Label(master=fenster2)
-  rand = randint(0,100)
-  while True:
-     
-     s = int(x.get())
-     if s < rand:
-        label2.config(text='Zu klein!', font=('Arial', 30))
-     elif s > rand:
-        label2.config(text='Zu groß!', font=('Arial', 30))
-     else:
-        label2.config(text='Herzlichen Glückwunsch! Sie haben die Zahl erraten!', font=('Arial', 30))
-        break 
-def null_zehn():
-   fenster.destroy
-   fenster3 = Tk(screenName='  Zahlenraten  ')
-   rand = randint(0,10)
-   x = Entry(master=fenster3, font=('Arial',30))
-   while True:
-     s = int(x.get())
-     if s < rand:
-        label.config(text='Zu klein!')
-     elif s > rand:
-        label.config(text='Zu groß!')
-     else:
-        label.config(text='Herzlichen Glückwunsch! Sie haben die Zahl erraten!')
-        break 
-def null_zehn2():
-   start_new_thread(null_zehn,())
-def null_hundert2():
-   start_new_thread(null_einhundert,())
-hndrt = Radiobutton(master=fenster,command=null_hundert2)
-zn = Radiobutton(master=fenster,command=null_zehn2)
+# The fenster properties
+fenster = Tk()
+fenster.title("  Zahlenraten  ")
+fenster.geometry("400x200")
+
+
+user_input_variable = StringVar()
+my_string_var = StringVar()
+max_random_value = 100
+labell = Label(master=fenster,font=('Arial',30))
+
+
+def random_value_game() -> None:
+    """Checks that entered value  equal to random."""
+
+    user_input = user_input_variable.get()
+    random_value = randint(0, max_random_value)
+    
+
+    if user_input.isnumeric():
+        user_number = int(user_input)
+        if user_number < random_value:
+            labell.config(text=f"Zu klein!")
+        elif user_number > random_value:
+           labell.config(text=f"Zu groß!")
+        else:
+            labell.config(text="Herzlichen Glückwunsch! Sie haben die Zahl erraten!")
+    else:
+        labell.config(text="Zahl ist nicht correct!")
+
+    user_input_variable.set("")
+
+
+my_string_var.set("Geben Sie die Zahl ein")
+numbers_entry = Entry(master=fenster,textvariable=user_input_variable, font=("Arial", 30))
+submit_button = Button(fenster, text="Einreichen", command=random_value_game)
+label = Label(fenster, textvariable=my_string_var, fg="#F0E", bg="black")
+numbers_entry.place(x=150,y=300,width=10, height=30)
+
 label.pack()
-zn.pack()
-hndrt.pack()
+labell.pack()
+numbers_entry.pack()
+submit_button.pack()
+
+# performing an infinite loop
+# for the window to display
 fenster.mainloop()
- 
+
+

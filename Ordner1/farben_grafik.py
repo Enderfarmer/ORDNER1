@@ -2,7 +2,7 @@ import tkinter as tk
 fenster = tk.Tk()
 eingabe = tk.Entry(master=fenster, font=('Arial'))
 # Set window size
-fenster.geometry("500x300")
+fenster.geometry("300x200")
 
 def farbfüllung():
     k = eingabe.get()
