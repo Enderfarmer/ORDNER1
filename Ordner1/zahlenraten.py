@@ -8,15 +8,10 @@ user_input_variable = StringVar()
 my_string_var = StringVar()
 max_random_value = 100
 labell = Label(master=fenster,font=('Arial',30))
-
-
+random_value = randint(0, 100)
 def random_value_game() -> None:
     """Checks that entered value  equal to random."""
-
     user_input = user_input_variable.get()
-    random_value = randint(0, max_random_value)
-    
-
     if user_input.isnumeric():
         user_number = int(user_input)
         if user_number < random_value:
@@ -24,10 +19,7 @@ def random_value_game() -> None:
         elif user_number > random_value:
            labell.config(text=f"Zu groß!")
         else:
-            labell.config(text="Herzlichen Glückwunsch! Sie haben die Zahl erraten!")
-    else:
-        labell.config(text="Unmöglich")
-
+            labell.config(text="Richtig!")
     user_input_variable.set("")
 
 
