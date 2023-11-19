@@ -7,13 +7,6 @@ planets=['Merkur','Venus','Erde','Mars','Jupiter','Saturn','Uranus','Neptun']
 user_input_variable = StringVar()
 fenster.geometry('400x300')
 label2 = Label(master=fenster,)
-def colour_change():
-    while True:
-        fenster.after(ms=250,func=button.config(fg=colours[0]))
-        colours2.append(colours[0])
-        del colours[0]
-        if colours == []:
-            colours.append(colours2[0])
 def planeten_abfragen()->None:
     user_input= user_input_variable.get()
     if planets != []:
@@ -34,7 +27,6 @@ def planeten_abfragen()->None:
 colours = ['red','orange','yellow','green','blue','purple']
 colours2 = []
 mystringvar = StringVar()
-radiobutton = Radiobutton(master=fenster,text='Farben wechseln',command=colour_change,variable=mystringvar)
 button = Button(master=fenster,text='Bestätigen',command=planeten_abfragen,bg='black',fg='white')
 llabell=Label(master=fenster,text='                                ')
 lllabelll=Label(master=fenster,text='                               ')
@@ -45,5 +37,4 @@ button.pack(side='bottom')
 lllabelll.pack(side='right')
 llabell.pack(side='left')
 entry.pack(side='bottom')
-radiobutton.pack(side='left')
 fenster.mainloop()
