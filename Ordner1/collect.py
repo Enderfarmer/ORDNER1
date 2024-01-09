@@ -5,5 +5,5 @@ from collections import namedtuple
 # Example:
 Buch = namedtuple('Buch',['Autor','Beschreibung'])
 buch = Buch(Autor='Michael Weigend',Beschreibung='Python Tricks')
-# The value can be shown. Like this
+# The value can be shown like this:
 print(buch.Autor)
